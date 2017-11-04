@@ -55,7 +55,7 @@ Crie um método chamado `nomeCompleto`, que retorne a frase:
 - "Olá! Meu nome é [NOME] [SOBRENOME]!"
 */
 pessoa.nomeCompleto = function(){
-return "Olá! Meu nome é "+pessoa.nome" "+pessoa.sobrenome;
+return "Olá! Meu nome é "+pessoa.nome+" "+pessoa.sobrenome;
 }
 
 /*
@@ -185,7 +185,7 @@ pessoa.apresentar = function(){
 			}
 
 				return "Olá, eu sou " +sexo+ " +pessoa.nome +" "+ pessoa.sobrenome+" tenho "+pessoa.idade+" "+ano+", " +pessoa.altura+" altura, meu peso é " +pessoa.peso+" e, KG só hoje, eu já caminhei "+pessoa.caminhouQuantosMetros+"  "+metro+" !";
-}
+};
 		
 				
 			
