@@ -184,7 +184,7 @@ pessoa.apresentar = function(){
 				metro = "metro";
 			}
 
-				return "Olá, eu sou " +sexo+ " +pessoa.nome +" "+ pessoa.sobrenome+" tenho "+pessoa.idade+" "+ano+", " +pessoa.altura+" altura, meu peso é " +pessoa.peso+" e, KG só hoje, eu já caminhei "+pessoa.caminhouQuantosMetros+"  "+metro+" !";
+				return "Olá, eu sou " +sexo+ " +pessoa.nome +" "+ pessoa.sobrenome+" tenho "+pessoa.idade+" "+ano+", " +pessoa.altura+" altura, meu peso é " +pessoa.peso+" e, KG só hoje, eu já caminhei "+pessoa.caminhouQuantosMetros+ "  "+metro+";
 };
 		
 				
