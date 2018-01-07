@@ -25,3 +25,94 @@
   - Utilize a lib DOM criada anteriormente para facilitar a manipulação e
   adicionar as informações em tela.
   */
+
+
+  (function(win,doc){
+  	var $input = doc.querySelector("[data-js='text']");
+  	var $buttonSend = doc.querySelector("[data-js='btn-send']");
+  	var $receiveDiv = doc.querySelector(".receive");
+  	var valueNumber;
+  	var $logradouro = doc.querySelector("[data-js='logradouro']");
+  	var $bairro = doc.querySelector("[data-js='bairro']");
+  	var $cidade = doc.querySelector("[data-js='cidade']");
+  	var $estado = doc.querySelector("[data-js='estado']");
+  	var $cep = doc.querySelector("[data-js='cep']");
+  	var $status = doc.querySelector("[data-js='status']");
+
+  	$buttonSend.addEventListener("click",handleClickSend,false);
+
+  	function handleClickSend(e){
+  		e.preventDefault();
+  		valueNumber = $input.value.match(/(\d)+/g).join("");
+  		ajaxRequest();
+  	}
+
+
+  	function ajaxRequest(){
+  		var dataResult;
+	  	connect();
+
+  	}
+  	
+  	function errorConversor(){
+  		try{
+  			converted = JSON.parse(ajax.responseText);
+  		}catch(e){
+  			return converted.responseText = null;
+  		}
+  	}
+  	function connect(){
+  		ajax = new XMLHttpRequest();
+  		ajax.open("GET",replaceCep("https://viacep.com.br/ws/[CEP]/json/"));
+  		ajax.send();
+  		status("loading");
+  		ajax.addEventListener("readystatechange",dataJson,false);
+  	}
+
+  	function dataJson(){
+  		if(ajax.status === 200 && ajax.readyState === 4){
+  			dataResult = resultParse();
+  			writeValue();
+  			status("ok");
+  		}else{
+  			console.log("erro");
+  		}
+  	}
+
+  	function resultParse(){
+  		var result;
+  		try{
+  			result = JSON.parse(ajax.responseText);
+  		}catch(e){
+  			result = null;
+  		}
+  		return result;
+  	}
+
+  	function writeValue(){
+  		$logradouro.innerHTML = dataResult.logradouro;
+  		$bairro.innerHTML = dataResult.bairro;
+  		$cidade.innerHTML = dataResult.localidade;
+  		$estado.innerHTML = dataResult.uf;
+  		$cep.innerHTML = dataResult.cep;
+  		status("ok");
+  	}
+
+  		function status(type){
+  		var message = {
+  			loading: replaceCep("Buscando informações para o CEP [CEP]..."),
+  			ok: replaceCep("Endereço referente ao CEP [CEP]"),
+  			error: replaceCep("Não escontramos endereço para o cep [CEP]")
+  		};
+  			return $status.innerHTML = message[type];
+  	}
+
+  		function replaceCep(string){
+  		return string.replace('[CEP]',valueNumber);
+  	}
+
+
+
+
+
+  })(window,document)

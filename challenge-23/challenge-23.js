@@ -23,3 +23,98 @@ multiplicação (x), então no input deve aparecer "1+2x".
 input;
 - Ao pressionar o botão "CE", o input deve ficar zerado.
 */
+
+	
+		var $inputText = document.querySelector("[data-js='inputText']");
+		var $button = document.querySelectorAll("[data-js='button']");
+		var $clear = document.querySelector("[data-js='clear']");
+		var $operation = document.querySelectorAll("[data-js='operation']");
+		var $result = document.querySelector("[data-js='result']");
+		var operations = ["-","+","%","*"];
+		$inputText.value = 0;
+
+		
+		function captureKey(key){
+		Array.prototype.forEach.call(key,function(button){
+			button.addEventListener("click",function(event){
+				$inputText.value += this.innerHTML;
+			},false)
+		});
+		}
+		Array.prototype.forEach.call($operation,function(operation){
+			operation.addEventListener("click",function(){
+				funtionRemoveCharacter($inputText);
+				$inputText.value += this.innerHTML;
+			},false);
+		},false);
+
+		$clear.addEventListener("click",function(event){
+			$inputText.value = 0;
+		},false);
+
+		$result.addEventListener("click",result,false);
+
+		
+		
+
+		
+
+		captureKey($button);
+
+		function verCharacter(){
+			values = $inputText.value.charAt($inputText.value.length-1);
+			 return operations.some(function(item){
+				return item === values;
+			});
+			 
+		}
+		function funtionRemoveCharacter(valorAVerificar){
+			if(verCharacter()){
+				$inputText.value = valorAVerificar.value.slice(0,-1);
+			}
+		}
+
+		function result(){
+			var arrayList = [];
+			arrayList = $inputText.value.match(/(?:\d+)([+*%-])?/g);
+			console.log(arrayList);
+			var resultFinal = arrayList.reduce(function(acumulado,atual){
+				var firstValue = acumulado.slice(0,-1);
+
+				var verOperation = acumulado.split("").pop();
+				switch(verOperation){
+					case "+" : return Number(firstValue) + Number(atual);
+					case "-" : return Number(firstValue) - Number(atual);
+					case "*" : return Number(firstValue) * Number(atual);
+					case "%" : return Number(firstValue) / Number(atual);
+
+				}
+				
+			});
+			$inputText.value = resultFinal;
+		}
+
+
+
+		
+
+
+
+
+
+
+
+		
+		
+
+	
+
+
+
+
+
+
+
+
+
+

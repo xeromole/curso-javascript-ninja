@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Cadastro Carros API</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header>
+		<h1 class="title">
+			<span data-js="name"></span>:
+			<span data-js="tel"></span>
+		</h1>
+	</header>
+	<div class="left">
+		<form action="/" data-js="form-submit">
+		<ul class="list">
+			<li>
+				<label for="">Imagem do carro</label>	
+				<input type="text" data-js="url">
+			</li>
+			<li>
+				<label for="">Marca / Modelo</label>	
+				<input type="text" data-js="marca">
+			</li>
+			<li>
+				<label for="">Ano</label>	
+				<input type="text" data-js="ano">
+			</li>
+			<li>
+				<label for="">Placa</label>	
+				<input type="text" data-js="placa">
+			</li>
+			<li>
+				<label for="">Cor</label>	
+				<input type="text" data-js="cor">
+			</li>
+			<li>
+				<input type="submit" data-js="send">
+			</li>
+
+		</ul>
+	</form>
+	</div>
+	<div class="right">
+		<table data-js="tableCar">
+			<thead>
+				<th>Imagem</th>
+				<th>Marca / Modelo</th>
+				<th>Ano</th>
+				<th>Placa</th>
+				<th>Cor</th>
+			</thead>
+			<tbody>
+
+			</tbody>
+		</table>
+	</div>
+<script src="DOM.js"></script>
+<script src="challenge-29.js"></script>
+</body>
+</html>

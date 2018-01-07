@@ -1,3 +1,4 @@
+(function(){
 /*
 Envolva todo o código desse desafio em uma IIFE.
 Crie um arquivo chamado index.html e adicione esse script ao HTML.
@@ -22,6 +23,24 @@ as seguintes características:
   que será instanciado.
 */
 // ?
+function Person (Name, LastName, Age){
+  this.name = Name;
+  this.lastName = LastName;
+  this.age = Age;
+
+
+   this.getFullName = function getFullName() {
+    return this.name +" "+ this.lastName;
+  }
+   this.getAge = function getAge(){
+    return this.age;
+  }
+   this.addAge = function addAge() {
+    this.age += arguments[0]; 
+    return this;
+  }
+
+}
 
 /*
 Crie 3 novos objetos usando o construtor acima. Os objetos serão novas
@@ -30,25 +49,36 @@ parâmetros corretamente para o construtor para criar as novas pessoas.
 Mostre as 3 novas pessoas criadas no console (Um console.log por pessoa).
 */
 console.log( 'Novas pessoas criadas à partir de Person:' );
-// ?
-
+var tiago = new Person("Tiago","Alves",20);
+var igor = new Person("Igor","Alves",24);
+var kayo = new Person("Kayo","Wanderley",30);
+console.log(tiago);
+console.log(igor);
+console.log(kayo);
 /*
 Mostre no console o nome completo de cada pessoa.
 */
 console.log( '\nNomes das pessoas:' );
-// ?
+console.log(tiago.getFullName());
+console.log(igor.getFullName());
+console.log(kayo.getFullName());
 
 /*
 Mostre no console as idades de cada pessoa, com a frase:
 - "[NOME COMPLETO] tem [IDADE] anos."
 */
 console.log( '\nIdade das pessoas:' );
-// ?
-
+console.log(tiago.getFullName(), " tem ", tiago.getAge()," Anos")
+console.log(igor.getFullName(), " tem ", igor.getAge()," Anos")
+console.log(kayo.getFullName(), " tem ", kayo.getAge()," Anos")
 /*
 Adicione alguns anos à cada pessoa, e mostre no console a nova idade de
 cada um. A frase deverá ser no formato:
 - "[NOME COMPLETO] agora tem [NOVA IDADE] anos."
 */
 console.log( '\nNova idade das pessoas:' );
-// ?
+console.log(tiago.getFullName() + " agora tem " +tiago.addAge(5).getAge()+ " anos");
+console.log(tiago.getFullName() + " agora tem " +igor.addAge(5).getAge()+ " anos");
+console.log(tiago.getFullName() + " agora tem " +kayo.addAge(5).getAge()+ " anos");
+
+})();

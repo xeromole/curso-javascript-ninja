@@ -1,0 +1,26 @@
+.input-text{
+	width: 24.3%;
+	padding: 20px 0 20px 0;
+	
+	display: block;
+	margin-bottom: 5px;
+}
+.btn{
+	width: 8%;
+	height: 40px;
+	display: inline-block;
+	margin: 3px 0px 3px 0px;
+	
+}
+.btn-result{
+	width: 16.2%;
+	height: 70px;
+	display: inline-block;
+	margin: 3px 0px 3px 0px;
+}
+
+.display {
+	width: 100%;
+	
+}
+

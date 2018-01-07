@@ -19,13 +19,41 @@ selecionados.
 Dica: olhe os erros que acontecem no console, e vá resolvendo um a um.
 Só passe para o próximo problema quando tiver resolvido o anterior :)
 */
-// ?
+function DOM(element){
+	this.element = document.querySelectorAll("[data-js='link']");
+	}
 
-var $a = new DOM('[data-js="link"]');
-$a.on('click', function(e) {
+	DOM.prototype.on = function on(event,callback){
+
+		this.element.forEach(function(item){
+			item.addEventListener(event,callback,false);
+		});
+		
+	};
+	DOM.prototype.off = function(event,callback){
+		this.element.forEach(function(item){
+			item.removeEventListener(event,callback,false);
+		});
+
+	};
+	DOM.prototype.get = function(){
+		return this.element;
+	};
+
+	
+
+
+
+
+
+var $a = new DOM("[data-js='link']");
+$a.on('click',function handleClick(e) {
   e.preventDefault();
   console.log('clicou');
+  $a.off("click",handleClick);
+
 });
+
 
 console.log('Elementos selecionados:', $a.get());
 console.log('$a é filho de body?', $a.get()[0].parentNode === document.body);
